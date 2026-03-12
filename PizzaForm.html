@@ -11,29 +11,47 @@
     <title>PIZZA by the SLICE - Order Form</title>
 </head>
 
+
 <body>
+    <style>
+        body{
+            background-color: rgb(255, 153, 109);
+        }
+    </style>
+    
 
     <h1>PIZZA by the SLICEABILITY</h1>
-    <p>Customizza your Pizza! (anodaw) </p>
+    <p>Customizza your Pizza! </p>
     <hr> <!--  for the like yan sha  -->
 
     <form>
         <div class="PersonDeets">
             <h3 style="font-family: Arial, Helvetica, sans-serif;">1. Personal Details</h3>
-            <label>Full Name:</label><br>
-            <input type="text" name="customer_name" required><br><br>
 
+            <label>Full Name:</label><br>
+            <input type="text" id="customer_name" name="customer_name"
+                minlength="5" maxlength="60" required><br><br>
+
+
+            <label>Email:</label><br>
+            <input type="email" name="email" required><br><br>
 
             <label>Phone Number:</label><br>
-            <input type="tel" name="phone" required><br><br>
+            <input type="tel" id="phone" name="phone"
+                title="Please enter 12 digits" required><br><br>
+
+            <label>Age:</label><br>
+            <input type="number" id="age" name="age"
+                minlength="13" maxlength="99" required><br><br>
         </div>
 
         <div class="PizzSize">
             <h3 style="font-family: Arial, Helvetica, sans-serif;">2. Select a Pizza Size</h3>
-            <input type="radio" name="size" value="small"> Small<br>
-            <input type="radio" name="size" value="medium" checked> Medium<br>
-            <input type="radio" name="size" value="large"> Large<br>
-            <input type="radio" name="size" value="extra-large"> Extra Large<br>
+            
+            <label> <input type="radio" name="size" value="small"> Small  </label> <br>
+            <label> <input type="radio" name="size" value="medium" checked> Medium </label> <br>
+            <label> <input type="radio" name="size" value="large"> Large </label> <br>
+            <label> <input type="radio" name="size" value="extra-large"> Extra Large </label> <br>
         </div>
 
         <div class="Crust">
@@ -48,29 +66,40 @@
         </div>
 
         <div class="Sauce">
+            
             <h3 style="font-family: Arial, Helvetica, sans-serif;">4. Choose your Sauce</h3>
-            <input type="radio" name="sauce" value="tomato"> Tomato<br>
-            <input type="radio" name="sauce" value="bbq"> BBQ Sauce<br>
-            <input type="radio" name="sauce" value="white"> White Garlic Sauce<br>
+            <select name="sauce" id="sauce" required>
+                <optgroup label="Classic">
+                    <option value="tomato">Tomato</option>
+                    <option value="garlic_white">Garlic White</option>
+                </optgroup>
+                <optgroup label="Special">
+                    <option value="pesto">Pesto</option>
+                    <option value="barbecue">Barbecue</option>
+                </optgroup>
+
+            </select>
+            
         </div>
 
         <div class="Toppings">
             <h3 style="font-family: Arial, Helvetica, sans-serif;">5. Choose your Toppings </h3>
-            <input type="checkbox" name="topping" value="cheese" checked disabled> Cheese<br>
-            <input type="checkbox" name="topping" value="pepperoni"> Pepperoni<br>
-            <input type="checkbox" name="topping" value="mushrooms"> Mushrooms<br>
-            <input type="checkbox" name="topping" value="onions"> Onions<br>
-            <input type="checkbox" name="topping" value="peppers"> Bell Peppers<br>
-            <input type="checkbox" name="topping" value="olives"> Olives<br>
-            <input type="checkbox" name="topping" value="bacon"> Bacon<br>
-            <input type="checkbox" name="topping" value="pineapple"
-                title="Warning: Pineapple on pizza is controversial!"> Pineapple<br>
+            <label><input type="checkbox" name="topping" value="cheese" checked disabled> Cheese </label><br>
+            <label><input type="checkbox" name="topping" value="pepperoni"> Pepperoni </label><br>
+            <label><input type="checkbox" name="topping" value="mushrooms"> Mushrooms </label><br>
+            <label><input type="checkbox" name="topping" value="onions"> Onions </label><br>
+            <label><input type="checkbox" name="topping" value="peppers"> Bell Peppers </label><br>
+            <label><input type="checkbox" name="topping" value="olives"> Olives </label><br>
+            <label><input type="checkbox" name="topping" value="bacon"> Bacon </label><br>
+            <label><input type="checkbox" name="topping" value="pineapple"
+                title="Warning: Pineapple on pizza is controversial!"> Pineapple </label><br>
         </div>
 
         <div class="DelivMethod">
             <h3 style="font-family: Arial, Helvetica, sans-serif;">6. Select Delivery Method </h3>
-            <input type="radio" name="delivery" value="pickup"> Pickup<br>
-            <input type="radio" name="delivery" value="delivery"> Home Delivery<br>
+            <label><input type="radio" name="delivery" value="pickup"> Pickup </label><br>
+            <label><input type="radio" name="delivery" value="delivery"> Home Delivery </label><br>
+            
             <br>
             <label for="address">Delivery Address:</label><br>
             <textarea id="address" name="address" rows="3" placeholder="Enter your full delivery address..."></textarea>
@@ -78,20 +107,77 @@
 
         <div class="Request">
             <h3 style="font-family: Arial, Helvetica, sans-serif;">7. Special Request</h3>
-            <textarea name="requests" rows="4" cols="30" placeholder="Any allergies or delivery instructions?"
-                style="border-radius: 10%;"></textarea><br>
+            <textarea name="requests" rows="4" cols="30" placeholder="Any allergies or delivery instructions?" ></textarea><br>
+                
         </div>
 
         <div class="PaymentInfo">
-            <h3 style="font-family: Arial, Helvetica, sans-serif;">8. Payment Information</h3>
-            <label>Card Number:</label><br>
-            <input type="password" name="CardNum" placeholder="XXXX-XXXX-XXX"><br><br>
+            <h3 style="font-family: Arial, Helvetica, sans-serif;">8. Payment</h3>
+            <fieldset>
+                <legend style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Payment Details</legend>
+
+                <div class="PaymentInfo">
+                    <label for="payment">Payment Method:</label><br>
+                        <select name="payment" id="payment" required>
+                            <option value="Credit">Credit Card</option>
+                            <option value="GCash">GCash</option>
+                            <option value="COD">Cash on Delivery</option>
+                        </select>
+                    <br><br>
+
+                    <label for="CardNum">Card Number: (Required for Credit Card only)</label><br>
+                        <input 
+                            type="text" 
+                            id="CardNum" 
+                            name="CardNum" 
+                            placeholder="1234567890123456" 
+                            pattern="[0-9]{16}" 
+                            title="Please enter exactly 16 digits with no spaces or dashes"
+                        >
+                    <br><br>
+                </div>
+            </fieldset>
         </div>
+
+        <div class="Prices">
+            <h3 style="font-family: Arial, Helvetica, sans-serif;">Price List </h3>
+
+            <table border="1" style="width: 100%;">
+                <tr>
+                    <th>SIZE</th>
+                    <th>BASE PRICE</th>
+                    <th>EXTRA TOPPINGS (each)</th>
+                </tr>
+
+                <tr>
+                    <td>Small</td>
+                    <td>₱199</td>
+                    <td>+₱20</td>
+                </tr>
+
+                <tr>
+                    <td>Medium</td>
+                    <td>₱299</td>
+                    <td>+₱25</td>
+                </tr>
+
+                <tr>
+                    <td>Large</td>
+                    <td>₱399</td>
+                    <td>+₱30</td>
+                </tr>
+
+                <tr>
+                    <td>Extra Large</td>
+                    <td>₱499</td>
+                    <td>+₱35</td>
+                </tr>
+            </table>
 
         <div class="Finalize">
             <hr>
-            <button type="submit">Place My Order</button>
-            <button type="reset">Start Over</button>
+            <button type="submit" style="cursor: pointer;">Place My Order</button>
+            <button type="reset;" style="cursor: pointer;">Start Over</button>
         </div>
     </form>
 
